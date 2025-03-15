@@ -1,2 +1,1 @@
-# spendly
-App for tracking your finance
+### Spendly - the greatest app to track your money
