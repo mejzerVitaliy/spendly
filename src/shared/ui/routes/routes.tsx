@@ -1,11 +1,11 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
 import { ROUTES } from '@/shared/consts';
-// import { useStoreSelector } from 'shared/hooks';
+import { useAuthStore } from '@/shared/stores';
 
 interface RouteProps {
   children: ReactNode;
@@ -13,28 +13,26 @@ interface RouteProps {
 
 const PrivateRoute = ({ children }: RouteProps) => {
   const router = useRouter();
+  const { accessToken } = useAuthStore()
 
-  // const { accessToken } = useStoreSelector(state => state.auth);
+  useEffect(() => {
+    if (!accessToken) {
+      router.replace(ROUTES.LOGIN);
+    }
+  }, [accessToken]);
 
-  if (false) {
-    router.replace(ROUTES.LOGIN);
-
-    return null;
-  }
-
-  router.replace(ROUTES.REGISTRATION);
+  return children;
 };
 
 const PublicRoute = ({ children }: RouteProps) => {
-  // const router = useRouter();
+  const router = useRouter();
+  const { accessToken } = useAuthStore();
 
-  // const { accessToken, redirectTo } = useStoreSelector(state => state.auth);
-
-  // if (accessToken) {
-  //   router.replace(redirectTo || ROUTES.DASHBOARD);
-
-  //   return null;
-  // }
+  useEffect(() => {
+    if (accessToken) {
+      router.replace(ROUTES.DASHBOARD);
+    }
+  }, [accessToken]);
 
   return children;
 };
