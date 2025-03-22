@@ -19,7 +19,7 @@ const PrivateRoute = ({ children }: RouteProps) => {
     if (!accessToken) {
       router.replace(ROUTES.LOGIN);
     }
-  }, [accessToken]);
+  }, [accessToken, router]);
 
   return children;
 };
@@ -32,7 +32,7 @@ const PublicRoute = ({ children }: RouteProps) => {
     if (accessToken) {
       router.replace(ROUTES.DASHBOARD);
     }
-  }, [accessToken]);
+  }, [accessToken, router]);
 
   return children;
 };
