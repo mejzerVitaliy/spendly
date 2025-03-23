@@ -34,9 +34,9 @@ function AuthForm<T extends z.ZodType>({
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="text-3xl">{type === "login" ? "Log In to Your Account" : "Create An Account"}</CardTitle>
+        <CardTitle className="text-2xl">{type === "login" ? "Log In to Your Account" : "Create An Account"}</CardTitle>
 
-        <CardDescription>
+        <CardDescription className="text-c1-regular">
           Please fill your credentials below
         </CardDescription>
       </CardHeader>
@@ -120,19 +120,21 @@ function AuthForm<T extends z.ZodType>({
               />
             )}
 
-            <Button 
-              className="w-full" 
-              type="submit"
-              disabled={submitDisabled}
-            >
-              {type === "login" ? "Log In" : "Sign Up"}
-            </Button>
-
-            <Link href={type === 'register'? ROUTES.LOGIN : ROUTES.REGISTRATION}>
-              <Button className="w-full" variant='outline' type="button">
-                {type === 'register' ? 'Already have an account? Log In' : 'Don`t have an account? Sign Up'}
+            <div className="flex flex-col gap-6">
+              <Button 
+                className="w-full" 
+                type="submit"
+                disabled={submitDisabled}
+              >
+                {type === "login" ? "Log In" : "Sign Up"}
               </Button>
-            </Link>
+
+              <Link href={type === 'register'? ROUTES.LOGIN : ROUTES.REGISTRATION}>
+                <Button className="w-full" variant='outline' type="button">
+                  {type === 'register' ? 'Already have an account? Log In' : 'Don`t have an account? Sign Up'}
+                </Button>
+              </Link>
+            </div>
             
           </form>
         </Form>

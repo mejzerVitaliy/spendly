@@ -1,6 +1,6 @@
 'use client'
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { authApi } from "@/shared/api";
 import { LoginResponse, RegisterResponse } from "@/shared/types";
 import { useAuthStore } from "@/shared/stores";
@@ -29,9 +29,24 @@ const useAuth = () => {
     },
   })
 
+  const useGetMeQuery = () => useQuery({
+    queryKey: ['user'],
+    queryFn: authApi.getUser,
+  })
+
+  const useLogoutMutation = () => useMutation({
+    mutationKey: ['logout'],
+    mutationFn: authApi.logout,
+    onSuccess: () => {
+      setTokens('', '')
+    }
+  })
+
   return {
     registerMutation: useRegistrationMutation(),
-    loginMutation: useLoginMutation()
+    loginMutation: useLoginMutation(),
+    getMeQuery: useGetMeQuery(),
+    logoutMutation: useLogoutMutation()
   }
 }
 

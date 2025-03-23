@@ -1,7 +1,7 @@
-import { LoginRequest, RegisterRequest } from "@/shared/types";
+import { GetMeResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from "@/shared/types";
 import { api } from "@/shared/api";
 
-const register = async (request: RegisterRequest) => {
+const register = async (request: RegisterRequest): Promise<RegisterResponse> => {
   const response = await api.post(
     "/auth/register",
     request
@@ -10,7 +10,7 @@ const register = async (request: RegisterRequest) => {
   return response.data;
 }
 
-const login = async (request: LoginRequest) => {
+const login = async (request: LoginRequest): Promise<LoginResponse> => {
   const response = await api.post(
     "/auth/login", 
     request
@@ -19,13 +19,19 @@ const login = async (request: LoginRequest) => {
   return response.data;
 };
 
-const getUser = async () => {
+const getUser = async (): Promise<GetMeResponse> => {
   const response = await api.get("/auth/me");
+
   return response.data;
 };
+
+const logout = async () => {
+  await api.put("/auth/logout");
+}
 
 export const authApi = {
   register,
   login,
-  getUser
+  getUser,
+  logout
 }
