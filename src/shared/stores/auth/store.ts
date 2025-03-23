@@ -14,13 +14,19 @@ const useAuthStore = create<AuthStore>((set) => ({
 }))
 
 if (typeof window !== "undefined") {
-  const {storedAccessToken, storedRefreshToken} = 
-    JSON.parse(localStorage.getItem("authTokens") as string) ||
-    {storedAccessToken: null, storedRefreshToken: null}
-
-  if (storedAccessToken && storedRefreshToken) {
-    useAuthStore.setState({ accessToken: storedAccessToken, refreshToken: storedRefreshToken });
+  const storedTokens = localStorage.getItem("authTokens");
+  
+  if (storedTokens) {
+    try {
+      const { accessToken, refreshToken } = JSON.parse(storedTokens);
+      if (accessToken && refreshToken) {
+        useAuthStore.setState({ accessToken, refreshToken });
+      }
+    } catch (e) {
+      console.error("Error parsing auth tokens", e);
+    }
   }
 }
+
 
 export { useAuthStore }

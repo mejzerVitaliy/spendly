@@ -4,6 +4,18 @@ import animationPlugin from 'tailwindcss-animate';
 
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
+  safelist: [
+    'data-[state=open]:animate-in',
+    'data-[state=closed]:animate-out',
+    'data-[state=closed]:fade-out-0',
+    'data-[state=open]:fade-in-0',
+    'data-[state=closed]:zoom-out-95',
+    'data-[state=open]:zoom-in-95',
+    'data-[side=bottom]:slide-in-from-top-2',
+    'data-[side=left]:slide-in-from-right-2',
+    'data-[side=right]:slide-in-from-left-2',
+    'data-[side=top]:slide-in-from-bottom-2',
+  ],
   future: { hoverOnlyWhenSupported: true },
   theme: {
     extend: {
@@ -68,54 +80,6 @@ const config: Config = {
             pressed: 'var(--branding-secondary-pressed)',
           },
         },
-        semantic: {
-          danger: {
-            primary: 'var(--semantic-danger-primary)',
-            hover: 'var(--semantic-danger-hover)',
-            pressed: 'var(--semantic-danger-pressed)',
-            background: 'var(--semantic-danger-background)',
-          },
-          success: {
-            primary: 'var(--semantic-success-primary)',
-            hover: 'var(--semantic-success-hover)',
-            pressed: 'var(--semantic-success-pressed)',
-            background: 'var(--semantic-success-background)',
-          },
-          warning: {
-            primary: 'var(--semantic-warning-primary)',
-            hover: 'var(--semantic-warning-hover)',
-            pressed: 'var(--semantic-warning-pressed)',
-            background: 'var(--semantic-warning-background)',
-          },
-          info: {
-            primary: 'var(--semantic-info-primary)',
-            hover: 'var(--semantic-info-hover)',
-            pressed: 'var(--semantic-info-pressed)',
-            background: 'var(--semantic-info-background)',
-          },
-        },
-        underlay: {
-          popup: 'var(--underlay-popup)',
-          media: 'var(--underlay-media)',
-        },
-        selected: {
-          list: {
-            lvl1: 'var(--selected-list-lvl1)',
-            lvl2: 'var(--selected-list-lvl2)',
-          },
-        },
-        table: {
-          header: {
-            group: 'var(--table-header-group)',
-            legend: 'var(--table-header-legend)',
-          },
-          row: {
-            border: 'var(--table-row-border)',
-            background: 'var(--table-row-background)',
-            hover: 'var(--table-row-hover)',
-          },
-        },
-        divider: 'var(--divider)',
       },
       keyframes: {
         'caret-blink': {
@@ -125,11 +89,19 @@ const config: Config = {
         'gradient-animation': {
           '0%': {background: 'linearGradient(45deg, #6a5be9 0%, #aa5be2 100%)'},
           '100%': {background: 'linearGradient(-45deg, #6a5be9 0%, #aa5be2 100%)'},
-        }
+        },
+        'fade-in': { from: { opacity: '0' }, to: { opacity: '1' } },
+        'fade-out': { from: { opacity: '1' }, to: { opacity: '0' } },
+        'zoom-in-95': { from: { transform: 'scale(0.95)' }, to: { transform: 'scale(1)' } },
+        'zoom-out-95': { from: { transform: 'scale(1)' }, to: { transform: 'scale(0.95)' } },
       },
       animation: {
         'caret-blink': 'caret-blink 1.25s ease-out infinite',
-        'animate-gradient': 'gradient-animation 0.5s ease-in-out forwards'
+        'animate-gradient': 'gradient-animation 0.5s ease-in-out forwards',
+        'fade-in-0': 'fade-in 150ms ease-out',
+        'fade-out-0': 'fade-out 150ms ease-in',
+        'zoom-in-95': 'zoom-in-95 150ms ease-out',
+        'zoom-out-95': 'zoom-out-95 150ms ease-in',
       },
     },
   },

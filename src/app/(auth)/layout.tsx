@@ -10,7 +10,7 @@ interface AuthLayoutProps {
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <PublicRoute>
-      <div className="flex min-h-screen max-h-screen p-3">
+      <div className="w-full bg-background flex min-h-screen max-h-screen p-3">
         <div className="relative w-3/5">
           <Image className='rounded-2xl border border-gray-700 object-cover' fill src={'/auth-photo.svg'} alt='auth' />
         </div>

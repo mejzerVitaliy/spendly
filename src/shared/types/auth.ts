@@ -26,9 +26,20 @@ interface LoginResponse
     refreshToken: string
   }> {}
 
+interface RefreshResponse 
+  extends ApiResponse<{
+    accessToken: string
+    refreshToken: string
+  }> {}
+
+interface GetMeResponse 
+  extends ApiResponse<User> {}
+
 export type { 
   RegisterRequest,
   RegisterResponse,
   LoginRequest,
-  LoginResponse
+  LoginResponse,
+  RefreshResponse,
+  GetMeResponse,
  }

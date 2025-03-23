@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -11,15 +11,28 @@ interface RouteProps {
   children: ReactNode;
 }
 
+// CHANGE THIS LOGIC LATER TO NEXT.JS MIDDLEWARE
+
 const PrivateRoute = ({ children }: RouteProps) => {
   const router = useRouter();
-  const { accessToken } = useAuthStore()
+  const { accessToken } = useAuthStore();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (!accessToken) {
+    if (accessToken) {
+      setIsLoaded(true);
+    } else {
       router.replace(ROUTES.LOGIN);
     }
   }, [accessToken, router]);
+
+  if (!isLoaded) {
+    return (
+      <div className='w-full h-screen flex justify-center items-center bg-background'>
+        <span className='w-20 h-20 border-4 border-dashed rounded-full animate-spin'/>
+      </div>
+    );
+  }
 
   return children;
 };
