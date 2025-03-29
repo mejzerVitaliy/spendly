@@ -5,3 +5,5 @@ export * from './label';
 export * from './card';
 export * from './form';
 export * from './popover';
+export * from './collapsible'
+export * from './dialog'

@@ -7,7 +7,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  color: white;
+  color: #F2F0FF;
 }
 
 @layer base {
@@ -16,25 +16,26 @@
   }; */
 
   .dark {
-      --background: #1c0224;
+      --background: #1C0224;
       /* --card-background: #191C1F; */
-      /* --input-background: #26292D; */
+      --input-background: #361A3F;
+
+      --disabled: #535353;
 
       --card-border: #25282E;
       --input-border: #494949;
       --focus-outline: #FFFFFF66;
 
-      --text-primary: #FFFFFF;
+      --text-primary: #F2F0FF;
       --text-secondary: #DADADA;
       --text-tertiary: #96989B;
-      --text-white: #FFFFFF;
       --text-hint: #B3B3B3;
       --text-disabled: #5B5E62;
       --text-black: #181A1F;
 
-      --branding-primary-default: #6e1489;
-      --branding-primary-hover: #460d57;
-      --branding-primary-pressed: #33083f;
+      --branding-primary-default: #471B55;
+      --branding-primary-hover: #662478;
+      --branding-primary-pressed: #ca56eb;
 
       --branding-secondary-default: #2D3137;
       --branding-secondary-hover: #686C73;

@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { PrivateRoute } from '@/shared/ui';
 import { Header } from '@/widgets/header';
+import { Sidebar } from '@/widgets/sidebar';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -10,9 +11,12 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <PrivateRoute>
-      <main className="h-screen bg-background">
+      <main className="h-screen max-h-screen bg-background flex flex-col">
         <Header />
-        {children}
+        <div className="flex flex-1">
+          <Sidebar />
+          <div className="flex-1">{children}</div>
+        </div>
       </main>
     </PrivateRoute>
   );
