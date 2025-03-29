@@ -80,6 +80,7 @@ const config: Config = {
             pressed: 'var(--branding-secondary-pressed)',
           },
         },
+        disabled: 'var(--disabled)',
       },
       keyframes: {
         'caret-blink': {

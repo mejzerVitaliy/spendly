@@ -1,11 +1,15 @@
 'use client'
 
+import { ROUTES } from "@/shared/consts"
 import { useAuth } from "@/shared/hooks"
 import { PersonIcon } from "@/shared/icons"
 import { Button, Popover, PopoverContent, PopoverTrigger } from "@/shared/ui"
+import Link from "next/link"
+import { useToggle } from "usehooks-ts"
 
 const AccountPopover = () => {
   const {getMeQuery, logoutMutation} = useAuth()
+  const [open, toggleOpen] = useToggle()
 
   const {data: user} = getMeQuery.data || {data: null};
 
@@ -14,11 +18,12 @@ const AccountPopover = () => {
   }
 
   const handleLogout = async () => {
+    toggleOpen();
     await logoutMutation.mutateAsync();
   }
 
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={toggleOpen}>
       <PopoverTrigger asChild>
         <Button variant="ghost" className="w-10 h-10 border-2 border-white rounded-full bg-gray-700">
           <PersonIcon width={24} height={24} />
@@ -27,12 +32,14 @@ const AccountPopover = () => {
 
       <PopoverContent className="mr-3 p-0">
         <div className="p-0">
-          <div className="p-2 border-b text-p1-bold">
-            <p>{user.firstName} {user.lastName}</p>
-            <p className="text-c2-medium">{user.email}</p>
+          <div className="p-2 border-b rounded-t-xl text-p1-bold hover:bg-branding-primary-hover">
+            <Link onClick={toggleOpen} href={ROUTES.PROFILE}>
+              <p>{user.firstName} {user.lastName}</p>
+              <p className="text-c2-medium">{user.email}</p>
+            </Link>
           </div>
 
-          <Button onClick={handleLogout} className="w-full rounded-t-none bg-transparent">
+          <Button onClick={handleLogout} className="w-full rounded-t-none rounded-b-xl bg-transparent">
             Log out
           </Button>
         </div>
