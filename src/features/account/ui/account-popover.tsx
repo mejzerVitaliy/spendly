@@ -25,9 +25,7 @@ const AccountPopover = () => {
   return (
     <Popover open={open} onOpenChange={toggleOpen}>
       <PopoverTrigger asChild>
-        <Button variant="ghost" className="w-10 h-10 border-2 border-white rounded-full bg-gray-700">
-          <PersonIcon width={24} height={24} />
-        </Button>
+        <PersonIcon className="cursor-pointer" />
       </PopoverTrigger>
 
       <PopoverContent className="mr-3 p-0">
