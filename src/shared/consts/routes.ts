@@ -5,9 +5,6 @@ const ROUTES = {
   PROFILE: '/profile',
   DASHBOARD: '/',
   TRANSACTIONS: '/transactions',
-  INCOMES: '/incomes',
-  EXPENSES: '/expenses',
-  CATEGORIES: '/categories',
   REPORTS: '/reports',
   SETTINGS: '/settings'
 }
