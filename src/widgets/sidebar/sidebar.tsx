@@ -1,7 +1,7 @@
 'use client'
 
 import { ROUTES } from "@/shared/consts";
-import { CardIcon, CategoriesIcon, ChevronLeftIcon, DashboardIcon, ExpensesIcon, IncomesIcon, ReportsIcon, SettingsIcon } from "@/shared/icons";
+import { CardIcon, ChevronLeftIcon, DashboardIcon, ReportsIcon, SettingsIcon } from "@/shared/icons";
 import { cn } from "@/shared/lib";
 import { useSidebarStore } from "@/shared/stores"
 import { Collapsible, CollapsibleTrigger } from "@/shared/ui"
@@ -22,24 +22,14 @@ const Sidebar = () => {
       href: ROUTES.TRANSACTIONS
     },
     {
-      label: 'Incomes',
-      Icon: IncomesIcon,
-      href: ROUTES.INCOMES
-    },
-    {
-      label: 'Expenses',
-      Icon: ExpensesIcon,
-      href: ROUTES.EXPENSES
-    },
-    {
-      label: 'Categories',
-      Icon: CategoriesIcon,
-      href: ROUTES.CATEGORIES
-    },
-    {
       label: 'Reports',
       Icon: ReportsIcon,
       href: ROUTES.REPORTS
+    },
+    {
+      label: 'Insights',
+      Icon: CardIcon,
+      href: ROUTES.INSIGHTS
     },
     {
       label: 'Settings',
@@ -51,27 +41,31 @@ const Sidebar = () => {
   return (
     <Collapsible open={isOpen} onOpenChange={toggleOpen}>
       <aside className={cn(
-        "sticky top-[60px] flex flex-col justify-between h-[calc(100vh-60px)] border-r border-border-card bg-branding-primary-default w-14 duration-300",
-        isOpen && "w-60"
+        "sticky top-[60px] flex flex-col justify-between h-[calc(100vh-60px)] bg-branding-primary-default border-r border-border w-14 duration-300",
+        isOpen && "w-[236px]"
       )}>
-        <ul className="transition-width flex flex-col duration-200">
+        <ul className="transition-width flex flex-col duration-300">
           {pages.map(({label, Icon, href}) => (
             <li key={href}>
               <Link
                 href={href}
-                className={`flex justify-start ${!isOpen && 'justify-center'} items-center gap-3 p-2 py-4 text-h3 hover:bg-branding-primary-hover`}
+                className={cn(
+                  'w-full h-[50px] flex items-center gap-3 px-6 text-[20px] font-medium transition-colors duration-500 hover:bg-branding-primary-hover',
+                  !isOpen && 'justify-center p-0'
+                )}
               >
-                <Icon />
+                <span className="min-w-[30px] flex justify-center">
+                  <Icon />
+                </span>
                 {isOpen && label}
               </Link>
             </li>
           ))}
         </ul>
 
-
         <CollapsibleTrigger asChild>
           <button
-            className="flex items-center justify-end border-t border-border-card bg-background-input w-full p-2 pr-4"
+            className="flex items-center justify-end bg-background-input w-full p-2 pr-4"
             type="button"
           >
             <ChevronLeftIcon
@@ -81,7 +75,6 @@ const Sidebar = () => {
               )}
               height={24}
               width={24}
-              fill="#FFFFFF"
             />
           </button>
         </CollapsibleTrigger>

@@ -4,9 +4,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { authApi } from "@/shared/api";
 import { LoginResponse, RegisterResponse } from "@/shared/types";
 import { useAuthStore } from "@/shared/stores";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/shared/consts";
 
 const useAuth = () => {
   const queryClient = useQueryClient()
+  const router = useRouter()
 
   const {setTokens} = useAuthStore()
   const useRegistrationMutation = () => useMutation({
@@ -39,6 +42,8 @@ const useAuth = () => {
     mutationFn: authApi.logout,
     onSuccess: () => {
       setTokens('', '')
+      queryClient.clear()
+      router.push(ROUTES.LOGIN)
     }
   })
 

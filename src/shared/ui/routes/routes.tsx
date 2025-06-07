@@ -11,20 +11,19 @@ interface RouteProps {
   children: ReactNode;
 }
 
-// CHANGE THIS LOGIC LATER TO NEXT.JS MIDDLEWARE
-
 const PrivateRoute = ({ children }: RouteProps) => {
   const router = useRouter();
-  const { accessToken } = useAuthStore();
+  const { validateAndUpdateTokens } = useAuthStore();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (accessToken) {
+    const isValid = validateAndUpdateTokens();
+    if (isValid) {
       setIsLoaded(true);
     } else {
       router.replace(ROUTES.LOGIN);
     }
-  }, [accessToken, router]);
+  }, [router, validateAndUpdateTokens]);
 
   if (!isLoaded) {
     return (

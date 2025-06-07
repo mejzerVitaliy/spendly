@@ -23,9 +23,9 @@ const config: Config = {
         inter: ['var(--font-inter)', 'sans-serif'],
       },
       fontSize: {
-        h1: ['32px', { lineHeight: '40px', fontWeight: '700' }],
-        h2: ['30px', { lineHeight: '40px', fontWeight: '700' }],
-        h3: ['20px', { lineHeight: '28px', fontWeight: '700' }],
+        h1: ['32px', { lineHeight: '40px', fontWeight: '500' }],
+        h2: ['28px', { lineHeight: '40px', fontWeight: '400' }],
+        h3: ['24px', { lineHeight: '28px', fontWeight: '400' }],
 
         'p1-regular': ['16px', { lineHeight: '24px', fontWeight: '400' }],
         'p1-medium': ['16px', { lineHeight: '24px', fontWeight: '500' }],
@@ -43,6 +43,9 @@ const config: Config = {
 
         label: ['12px', { lineHeight: '16px', fontWeight: '500' }],
       },
+      borderRadius: {
+        card: '12px',
+      },
       colors: {
         background: {
           DEFAULT: 'var(--background)',
@@ -53,6 +56,7 @@ const config: Config = {
           'inactive-opacity': 'var(--background-inactive-opacity)',
         },
         border: {
+          DEFAULT: 'var(--border)',
           card: 'var(--card-border)',
           input: 'var(--input-border)',
           focus: 'var(--focus-outline)',

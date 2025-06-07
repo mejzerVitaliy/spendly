@@ -6,6 +6,7 @@ const ROUTES = {
   DASHBOARD: '/',
   TRANSACTIONS: '/transactions',
   REPORTS: '/reports',
+  INSIGHTS: '/insights',
   SETTINGS: '/settings'
 }
 

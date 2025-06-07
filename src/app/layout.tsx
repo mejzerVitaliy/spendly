@@ -15,6 +15,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Spendly',
+  description: 'Spendly is a personal finance app that helps you track your expenses and manage your budget effectively.',
 };
 
 interface RootLayoutProps {
@@ -23,7 +24,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body className={inter.className}>
         <QueryProvider>
           {children}

@@ -1,16 +1,25 @@
 import { env } from "@/env";
 import axios from "axios";
 import { RefreshResponse } from "@/shared/types";
+import { useAuthStore } from "@/shared/stores";
 
 const api = axios.create({
   baseURL: env.NEXT_PUBLIC_API_URL
 })
 
 api.interceptors.request.use((config) => {
-  const {accessToken} = JSON.parse(localStorage.getItem("authTokens") as string) || {accessToken: ''};
+  const storedTokens = localStorage.getItem("authTokens");
+  if (!storedTokens) {
+    return config;
+  }
 
-  if (accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`;
+  try {
+    const { accessToken } = JSON.parse(storedTokens);
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+  } catch (error) {
+    console.error("Error parsing auth tokens:", error);
   }
 
   return config;
@@ -19,9 +28,18 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response?.status === 401) {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
       try {
-        const {refreshToken} = JSON.parse(localStorage.getItem("authTokens") as string);
+        const storedTokens = localStorage.getItem("authTokens");
+        if (!storedTokens) {
+          throw new Error("No tokens available");
+        }
+
+        const { refreshToken } = JSON.parse(storedTokens);
 
         if (!refreshToken) {
           throw new Error("No refresh token available");
@@ -29,19 +47,21 @@ api.interceptors.response.use(
 
         const { data }: RefreshResponse = await api.post("/auth/refresh", { refreshToken });
 
-        localStorage.setItem("authTokens", JSON.stringify(data));
+        // Update both localStorage and auth store
+        useAuthStore.getState().setTokens(data.accessToken, data.refreshToken);
 
-        error.config.headers.Authorization = `Bearer ${data.accessToken}`;
+        originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
 
-        return api(error.config);
+        return api(originalRequest);
       } catch (refreshError) {
-        localStorage.removeItem("authTokens");
-        
+        // Clear both localStorage and auth store on refresh failure
+        useAuthStore.getState().setTokens('', '');
         return Promise.reject(refreshError);
       }
     }
+
     return Promise.reject(error);
   }
 );
 
-export {api}
+export { api };
