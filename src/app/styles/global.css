@@ -12,11 +12,11 @@
 @layer base {
   :root {
     color: #000000;
-    --background: #e9dcff;
+    --background: #F6EDFF;
     --background-card: #FFFFFF;
-    --input-background: #d7c0fc;
-    --branding-primary-default: #dac8f8;
-    --branding-primary-hover: #c3a2f8;
+    --input-background: #FFFFFF;
+    --branding-primary-default: #FFFFFF;
+    --branding-primary-hover: #f7ccff;
     --border: #BDBDBD;
   }
 

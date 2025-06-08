@@ -47,15 +47,21 @@ api.interceptors.response.use(
 
         const { data }: RefreshResponse = await api.post("/auth/refresh", { refreshToken });
 
-        // Update both localStorage and auth store
+        const newTokens = {
+          accessToken: data.accessToken,
+          refreshToken: data.refreshToken,
+        };
+        localStorage.setItem("authTokens", JSON.stringify(newTokens));
         useAuthStore.getState().setTokens(data.accessToken, data.refreshToken);
 
+        if (!originalRequest.headers) originalRequest.headers = {};
         originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
 
         return api(originalRequest);
       } catch (refreshError) {
-        // Clear both localStorage and auth store on refresh failure
+        console.error("Refresh token failed:", refreshError);
         useAuthStore.getState().setTokens('', '');
+        localStorage.removeItem("authTokens");
         return Promise.reject(refreshError);
       }
     }

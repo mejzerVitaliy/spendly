@@ -20,6 +20,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['var(--font-lato)', 'sans-serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
       },
       fontSize: {
@@ -99,6 +100,22 @@ const config: Config = {
         'fade-out': { from: { opacity: '1' }, to: { opacity: '0' } },
         'zoom-in-95': { from: { transform: 'scale(0.95)' }, to: { transform: 'scale(1)' } },
         'zoom-out-95': { from: { transform: 'scale(1)' }, to: { transform: 'scale(0.95)' } },
+        slideUpAndFade: {
+          '0%': { opacity: '0', transform: 'translateY(2px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideRightAndFade: {
+          '0%': { opacity: '0', transform: 'translateX(-2px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        slideDownAndFade: {
+          '0%': { opacity: '0', transform: 'translateY(-2px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideLeftAndFade: {
+          '0%': { opacity: '0', transform: 'translateX(2px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
       },
       animation: {
         'caret-blink': 'caret-blink 1.25s ease-out infinite',
@@ -107,6 +124,10 @@ const config: Config = {
         'fade-out-0': 'fade-out 150ms ease-in',
         'zoom-in-95': 'zoom-in-95 150ms ease-out',
         'zoom-out-95': 'zoom-out-95 150ms ease-in',
+        slideUpAndFade: 'slideUpAndFade 0.2s ease-out',
+        slideRightAndFade: 'slideRightAndFade 0.2s ease-out',
+        slideDownAndFade: 'slideDownAndFade 0.2s ease-out',
+        slideLeftAndFade: 'slideLeftAndFade 0.2s ease-out',
       },
     },
   },
