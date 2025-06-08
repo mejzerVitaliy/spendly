@@ -1,13 +1,7 @@
-import { ControlPanel, Transactions } from "@/features/transactions";
+import { TransactionsContent } from "@/widgets/transactions-content";
 
 export default function TransactionsPage() {
   return (
-    <div className="relative">
-      <ControlPanel />
-
-      <div className="p-4">
-        <Transactions />
-      </div>
-    </div>
+    <TransactionsContent />
   );
 }

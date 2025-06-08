@@ -7,3 +7,4 @@ export * from './form';
 export * from './popover';
 export * from './collapsible'
 export * from './dialog'
+export * from './dropdown'
