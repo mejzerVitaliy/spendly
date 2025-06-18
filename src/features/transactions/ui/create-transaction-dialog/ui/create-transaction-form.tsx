@@ -13,7 +13,11 @@ import { useToggle } from 'usehooks-ts'
 import { cn } from '@/shared/lib'
 import { useTransactions } from '@/shared/hooks'
 
-const CreateTransactionForm = () => {
+interface CreateTransactionFormProps {
+  onDialogClose: () => void
+}
+
+const CreateTransactionForm = ({ onDialogClose }: CreateTransactionFormProps) => {
   const [currencyDropdownOpen, toggleCurrencyDropdownOpen] = useToggle()
   const { createTransactionMutation, getAllTransactionsQuery } = useTransactions()
 
@@ -39,6 +43,7 @@ const CreateTransactionForm = () => {
     try {
       await createTransactionMutation.mutateAsync(preparedData)
       getAllTransactionsQuery.refetch()
+      onDialogClose()
     } catch (error) {
       console.error(error)
     }

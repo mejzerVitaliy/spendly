@@ -10,7 +10,7 @@ const TransactionActionsDropdown = () => {
   const [open, toggleOpen] = useToggle()
   const { id } = useParams<{ id: string }>()
 
-  const { onRemoveTransaction, onUpdateTransaction } = useTransactionActions()
+  const { onRemoveTransaction } = useTransactionActions()
 
   const actions = useMemo(() => ([
     {
@@ -23,7 +23,7 @@ const TransactionActionsDropdown = () => {
       label: 'Delete',
       onClick: () => onRemoveTransaction(id)
     }
-  ]), [id, onRemoveTransaction, onUpdateTransaction])
+  ]), [id, onRemoveTransaction])
 
   return (
     <DropdownMenu open={open} onOpenChange={toggleOpen}>

@@ -1,8 +1,7 @@
 ## Description
-<!-- Describe the changes you've made and why they are necessary -->
+
 
 ## Type of Changes
-<!-- Check the appropriate type of changes -->
 - [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
 - [ ] ✨ New feature (non-breaking change which adds functionality)
 - [ ] 💥 Breaking change (fix or feature that would cause existing functionality to not work as expected)
@@ -15,12 +14,10 @@
 - [ ] 📦 Dependencies (updating dependencies)
 
 ## Screenshots (if applicable)
-<!-- Add screenshots if the changes affect the UI -->
 
-## Task in trello: [title](trello_link)
+## [Task in trello](trello_link)
 
 ## Checklist
-<!-- Check the boxes for completed items -->
 - [ ] My code follows the project's style guidelines
 - [ ] I have reviewed my own code
 - [ ] I have updated the documentation (if necessary)

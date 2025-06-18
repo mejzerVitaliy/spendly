@@ -12,12 +12,20 @@
 @layer base {
   :root {
     color: #000000;
-    --background: #F6EDFF;
-    --background-card: #FFFFFF;
-    --input-background: #FFFFFF;
-    --branding-primary-default: #FFFFFF;
-    --branding-primary-hover: #f7ccff;
+    --background: #F4E7FF;
+    --background-card: #FCFAFF;
+    --input-background: #FAFAFA;
+    --branding-primary-default: #E1C2FF;
+    --branding-primary-hover: #cd9bff;
+    --branding-secondary-default: #E8E8E8;
+    --branding-secondary-hover: #e0c1ff;
+    --background-white: #FCFAFF;
     --border: #BDBDBD;
+    --background-checked: #E8D1FF;
+    --text-checked: #7540AA;
+    --border-button: #7540AA;
+    --text-positive: #00d812;
+    --text-negative: #FF0000;
   }
 
   .dark {
