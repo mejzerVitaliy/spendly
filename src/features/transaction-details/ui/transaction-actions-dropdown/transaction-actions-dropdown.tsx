@@ -25,6 +25,7 @@ const TransactionActionsDropdown = () => {
     }
   ]), [id, onRemoveTransaction])
 
+
   return (
     <DropdownMenu open={open} onOpenChange={toggleOpen}>
       <DropdownMenuTrigger>
