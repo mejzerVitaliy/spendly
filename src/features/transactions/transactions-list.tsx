@@ -6,6 +6,7 @@ import { PlusIcon } from "lucide-react"
 import { CreateTransactionDialog } from "./ui/create-transaction-dialog"
 import { TransactionCard } from "./ui"
 
+
 const TransactionsList = () => {
   const { getAllTransactionsQuery } = useTransactions()
   const data = getAllTransactionsQuery.data

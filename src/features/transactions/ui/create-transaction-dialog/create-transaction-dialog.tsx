@@ -13,6 +13,7 @@ import { CreateTransactionForm } from "./ui"
 import { PlusIcon } from "lucide-react"
 import { useToggle } from "usehooks-ts"
 
+
 interface CreateTransactionDialogProps {
   trigger?: ReactNode
 }
