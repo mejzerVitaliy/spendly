@@ -54,6 +54,8 @@ const config: Config = {
           input: 'var(--input-background)',
           opacity: 'var(--background-opacity)',
           notification: 'var(--notification-background)',
+          white: 'var(--background-white)',
+          checked: 'var(--background-checked)',
           'inactive-opacity': 'var(--background-inactive-opacity)',
         },
         border: {
@@ -61,6 +63,7 @@ const config: Config = {
           card: 'var(--card-border)',
           input: 'var(--input-border)',
           focus: 'var(--focus-outline)',
+          button: 'var(--border-button)',
         },
         text: {
           primary: 'var(--text-primary)',
@@ -70,19 +73,22 @@ const config: Config = {
           hint: 'var(--text-hint)',
           disabled: 'var(--text-disabled)',
           black: 'var(--text-black)',
+          checked: 'var(--text-checked)',
+          positive: 'var(--text-positive)',
+          negative: 'var(--text-negative)',
         },
         branding: {
           primary: {
             default: 'var(--branding-primary-default)',
             hover: 'var(--branding-primary-hover)',
-            pressed: 'var(--branding-primary-pressed)',
-            'on-surface': 'var(--branding-primary-on-surface)',
-            background: 'var(--branding-primary-background)',
+            // pressed: 'var(--branding-primary-pressed)',
+            // 'on-surface': 'var(--branding-primary-on-surface)',
+            // background: 'var(--branding-primary-background)',
           },
           secondary: {
             default: 'var(--branding-secondary-default)',
             hover: 'var(--branding-secondary-hover)',
-            pressed: 'var(--branding-secondary-pressed)',
+            // pressed: 'var(--branding-secondary-pressed)',
           },
         },
         disabled: 'var(--disabled)',

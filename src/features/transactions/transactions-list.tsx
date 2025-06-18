@@ -4,8 +4,7 @@ import { useTransactions } from "@/shared/hooks"
 import { Button } from "@/shared/ui"
 import { PlusIcon } from "lucide-react"
 import { CreateTransactionDialog } from "./ui/create-transaction-dialog"
-import Link from "next/link"
-import { ROUTES } from "@/shared/consts"
+import { TransactionCard } from "./ui"
 
 const TransactionsList = () => {
   const { getAllTransactionsQuery } = useTransactions()
@@ -34,13 +33,10 @@ const TransactionsList = () => {
   }
 
   return (
-    <div className="relative w-full h-full overflow-y-auto p-4">
+    <div className="relative w-full h-full overflow-y-auto p-4 pt-0">
       <ul className="w-full flex flex-col gap-4">
-        {transactions.map(transaction => (
-          <Link href={`${ROUTES.TRANSACTIONS}/${transaction.id}`} key={transaction.id} className="w-full h-[100px] bg-branding-primary-default p-4 rounded-card shadow-lg">
-            <h4 className="text-lg font-semibold">{transaction.amount}</h4>
-            <p className="text-base">{transaction.description}</p>
-          </Link>
+        {transactions.map((transaction) => (
+          <TransactionCard key={transaction.id} transaction={transaction} />
         ))}
       </ul>
 
