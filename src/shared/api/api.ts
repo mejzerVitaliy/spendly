@@ -1,6 +1,5 @@
 import { env } from "@/env";
 import axios from "axios";
-import { RefreshResponse } from "@/shared/types";
 import { useAuthStore } from "@/shared/stores";
 
 const api = axios.create({
@@ -25,18 +24,39 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+let isRefreshing = false;
+let refreshPromise: Promise<unknown> | null = null;
+
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    
+    const isRefreshEndpoint = originalRequest?.url?.includes('/auth/refresh');
+    
+    if (error.response?.status === 401 && !originalRequest._retry && !isRefreshEndpoint) {
       originalRequest._retry = true;
 
+      if (isRefreshing) {
+        try {
+          await refreshPromise;
+          const storedTokens = localStorage.getItem("authTokens");
+          if (storedTokens) {
+            const { accessToken } = JSON.parse(storedTokens);
+            originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+            return api(originalRequest);
+          }
+        } catch (refreshError) {
+          return Promise.reject(refreshError);
+        }
+      }
+
+      isRefreshing = true;
+      
       try {
         const storedTokens = localStorage.getItem("authTokens");
         if (!storedTokens) {
-          throw new Error("No tokens available");
+          throw new Error("No tokens available in localStorage");
         }
 
         const { refreshToken } = JSON.parse(storedTokens);
@@ -45,25 +65,40 @@ api.interceptors.response.use(
           throw new Error("No refresh token available");
         }
 
-        const { data }: RefreshResponse = await api.post("/auth/refresh", { refreshToken });
-
+        const refreshResponse = await axios.post(`${env.NEXT_PUBLIC_API_URL}/auth/refresh`, { 
+          refreshToken 
+        });
+        
         const newTokens = {
-          accessToken: data.accessToken,
-          refreshToken: data.refreshToken,
+          accessToken: refreshResponse.data.data.accessToken,
+          refreshToken: refreshResponse.data.data.refreshToken,
         };
+        
         localStorage.setItem("authTokens", JSON.stringify(newTokens));
-        useAuthStore.getState().setTokens(data.accessToken, data.refreshToken);
+        useAuthStore.getState().setTokens(newTokens.accessToken, newTokens.refreshToken);
 
         if (!originalRequest.headers) originalRequest.headers = {};
-        originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+        originalRequest.headers.Authorization = `Bearer ${newTokens.accessToken}`;
 
+        isRefreshing = false;
+        refreshPromise = null;
+        
         return api(originalRequest);
       } catch (refreshError) {
         console.error("Refresh token failed:", refreshError);
+        console.error("Refresh error details:", (refreshError as unknown as { response?: { data: unknown } }).response?.data);
+        
         useAuthStore.getState().setTokens('', '');
-        localStorage.removeItem("authTokens");
+        
+        isRefreshing = false;
+        refreshPromise = null;
+        
         return Promise.reject(refreshError);
       }
+    }
+
+    if (error.response?.status === 401 && isRefreshEndpoint) {
+      useAuthStore.getState().setTokens('', '');
     }
 
     return Promise.reject(error);

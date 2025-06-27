@@ -26,6 +26,7 @@
     --border-button: #7540AA;
     --text-positive: #00d812;
     --text-negative: #FF0000;
+    --text-tertiary: #96989B;
   }
 
   .dark {
@@ -71,4 +72,12 @@
     --semantic-info-pressed: #1F489D;
     --semantic-info-background: #3376FF29; */
   }
+}
+
+.custom-scrollbar-primary {
+  @apply [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-branding-primary-hover [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-[10px]
+}
+
+.custom-scrollbar-secondary {
+  @apply [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-branding-primary-default [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-[5px]
 }

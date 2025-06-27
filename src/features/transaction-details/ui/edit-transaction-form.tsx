@@ -20,8 +20,6 @@ import { updateTransactionSchema, UpdateTransactionValues } from "../lib";
 import {
   Currency,
   Transaction,
-  TransactionCategory,
-  TransactionType,
 } from "@/shared/types";
 import { TransactionCategoryDropdown } from "@/features/transactions/ui/create-transaction-dialog/ui/transaction-category-dropdown";
 import { TransactionTypeDropdown } from "@/features/transactions/ui/create-transaction-dialog/ui/transaction-type-dropdown";

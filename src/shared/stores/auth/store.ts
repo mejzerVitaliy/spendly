@@ -18,10 +18,12 @@ const useAuthStore = create<AuthStore>((set) => ({
   isAuthenticated: false,
 
   setTokens: (accessToken: string, refreshToken: string) => {
+    console.log('setTokens called:', { hasAccess: !!accessToken, hasRefresh: !!refreshToken })
     if (accessToken && refreshToken) {
       localStorage.setItem('authTokens', JSON.stringify({ accessToken, refreshToken }))
       set({ accessToken, refreshToken, isAuthenticated: true })
     } else {
+      console.log('Clearing tokens from localStorage')
       localStorage.removeItem('authTokens')
       set({ accessToken: null, refreshToken: null, isAuthenticated: false })
     }
@@ -29,6 +31,8 @@ const useAuthStore = create<AuthStore>((set) => ({
 
   validateAndUpdateTokens: () => {
     const storedTokens = localStorage.getItem('authTokens')
+    console.log('validateAndUpdateTokens called, has stored tokens:', !!storedTokens)
+    
     if (!storedTokens) {
       set({ accessToken: null, refreshToken: null, isAuthenticated: false })
       return false
@@ -39,12 +43,29 @@ const useAuthStore = create<AuthStore>((set) => ({
       const isAccessTokenValid = validateToken(accessToken)
       const isRefreshTokenValid = validateToken(refreshToken)
 
-      if (!isAccessTokenValid || !isRefreshTokenValid) {
+      console.log('Token validation:', { 
+        accessValid: isAccessTokenValid, 
+        refreshValid: isRefreshTokenValid 
+      })
+
+      // Если refresh token невалиден - полный логаут
+      if (!isRefreshTokenValid) {
+        console.log('Refresh token invalid, clearing all tokens')
         localStorage.removeItem('authTokens')
         set({ accessToken: null, refreshToken: null, isAuthenticated: false })
         return false
       }
 
+      // Если access token невалиден, но refresh валиден - НЕ удаляем токены
+      // Пусть API interceptor попробует их обновить
+      if (!isAccessTokenValid && isRefreshTokenValid) {
+        console.log('Access token expired but refresh valid - keeping tokens for API interceptor')
+        // Устанавливаем токены в store но isAuthenticated = false пока не обновятся
+        set({ accessToken, refreshToken, isAuthenticated: false })
+        return false // Возвращаем false чтобы PrivateRoute показал loading
+      }
+
+      // Оба токена валидны
       set({ accessToken, refreshToken, isAuthenticated: true })
       return true
     } catch (e) {
@@ -56,7 +77,6 @@ const useAuthStore = create<AuthStore>((set) => ({
   }
 }))
 
-// Initialize store with tokens from localStorage
 if (typeof window !== 'undefined') {
   useAuthStore.getState().validateAndUpdateTokens()
 }
