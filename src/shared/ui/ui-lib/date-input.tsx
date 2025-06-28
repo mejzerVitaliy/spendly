@@ -7,6 +7,7 @@ import { DateFormat, formatDate } from '@/shared/lib/date';
 import { Button } from '@/shared/ui';
 import { Calendar } from '@/shared/ui';
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui';
+import { CalendarDaysIcon } from 'lucide-react';
 
 interface DateInputProps {
   className?: string;
@@ -42,16 +43,16 @@ const DateInput = ({
           )}
           variant='outline'
           size={size}
-          rightIcon={hasIcon && <CalendarIcon fill="#dadada" width={12} height={12} />}
+          rightIcon={hasIcon && <CalendarDaysIcon className='!w-5 !h-5' />}
           onClick={() => setOpen(true)}
         >
-          {formatDate(date, DateFormat['MM/DD/YYYY'])}
+          {formatDate(date, DateFormat['DD/MM/YYYY'])}
         </Button>
       </PopoverTrigger>
 
       <PopoverContent 
         className="w-auto p-0 z-[100]"
-        align="start"
+        align="center"
         sideOffset={4}
       >
         <Calendar

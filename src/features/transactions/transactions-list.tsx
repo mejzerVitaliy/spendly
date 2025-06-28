@@ -12,7 +12,7 @@ import { useEffect, useState } from "react"
 import { Transaction } from "@/shared/types"
 
 const TransactionsList = () => {
-  const { search, type, categories, currencies } = useFilterStore()
+  const { search, type, categories, currencies, date } = useFilterStore()
   const { transactionView } = useAppearanceStore()
 
   const [filteredTransactions, setFilteredTransactions] = useState<Transaction[]>([])
@@ -48,6 +48,11 @@ const TransactionsList = () => {
         }
       }
 
+      if (date) {
+        const transactionDate = new Date(transaction.date).toLocaleDateString()
+        isFilterPassed = isFilterPassed && (transactionDate === date)
+      }
+
       return isFilterPassed
     })
 
@@ -56,8 +61,15 @@ const TransactionsList = () => {
     })
 
     setFilteredTransactions(sortedTransactions || [])
-  }, [transactions, search, type, categories, currencies])
+  }, [transactions, search, type, categories, currencies, date])
 
+  if (getAllTransactionsQuery.isLoading) {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <span className="w-20 h-20 border-4 border-dashed border-branding-primary-default rounded-full animate-spin" />
+      </div>
+    )
+  }
 
   if (!transactions || !transactions.length) {
     return (

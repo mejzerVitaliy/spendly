@@ -12,3 +12,4 @@ export * from './ui-lib/label';
 export * from './ui-lib/popover';
 export * from './ui-lib/date-input';
 export * from './password-input';
+export * from './date-picker';

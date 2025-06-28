@@ -23,7 +23,7 @@ const Calendar = ({
       )}
       classNames={{
         chevron: 'w-4 h-4',
-        selected: 'bg-black text-white font-bold',
+        selected: 'bg-branding-primary-default text-white font-bold',
         months: 'flex flex-col text-center relative',
         month: 'space-y-4',
         caption: 'flex justify-center pt-1 relative items-center',
@@ -36,7 +36,7 @@ const Calendar = ({
         row: 'flex w-full mt-2',
         cell: 'h-9 w-9 rounded-full text-center text-sm p-0 relative',
         day: cn(
-          'h-9 w-9 p-0 font-normal text-center rounded-full transition-colors hover:bg-background-input duration-300 aria-selected:opacity-100'
+          'h-9 w-9 p-0 font-normal text-center rounded-full transition-colors hover:bg-branding-primary-hover duration-300 aria-selected:opacity-100'
         ),
         range_end: 'day-range-end',
         outside:
