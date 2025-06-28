@@ -43,7 +43,7 @@ const navigationItems = [
 
 const SettingsNavigation = ({ activeTab, onTabChange }: SettingsNavigationProps) => {
   return (
-    <aside className="w-[280px] rounded-card h-full bg-background-white border-r border-border p-6">
+    <aside className="w-[280px] rounded-card h-full bg-background-white shadow-lg p-6">
       <div className="mb-6">
         <p className="text-p1-medium text-text-secondary">
           Manage your account and application preferences
@@ -68,7 +68,7 @@ const SettingsNavigation = ({ activeTab, onTabChange }: SettingsNavigationProps)
                 <Icon 
                   className={cn(
                     "w-5 h-5 mt-0.5 transition-colors duration-300",
-                    isActive ? "text-black " : "text-branding-primary-hover group-hover:text-black"
+                    isActive ? "text-black " : "text-text-checked group-hover:text-black"
                   )} 
                 />
                 
