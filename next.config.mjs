@@ -10,7 +10,7 @@ jiti('./src/env');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['lh3.googleusercontent.com', 'storage.googleapis.com'], // For pictures of users who signed in via google
+    domains: ['lh3.googleusercontent.com', 'storage.googleapis.com', 'res.cloudinary.com'], // For pictures of users who signed in via google
   },
 
   webpack(config) {

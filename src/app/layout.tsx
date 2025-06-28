@@ -35,7 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" className={`${inter.className} ${lato.className}`}>
       <body>
         <QueryProvider>{children}</QueryProvider>
-        <Toaster position="top-right" richColors />
+        <Toaster position="top-right" richColors duration={5000} closeButton />
       </body>
     </html>
   );

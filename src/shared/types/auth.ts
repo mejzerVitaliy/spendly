@@ -42,4 +42,4 @@ export type {
   LoginResponse,
   RefreshResponse,
   GetMeResponse,
- }
+}

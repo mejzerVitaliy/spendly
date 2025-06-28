@@ -1,7 +1,5 @@
-export default function SettingPage() {
-  return (
-    <div className="relative flex h-full items-center justify-center">
-      <h1>Settings</h1>
-    </div>
-  );
+import { SettingsContentWidget } from "@/widgets/settings-content";
+
+export default function SettingsPage() {
+  return <SettingsContentWidget />;
 }
