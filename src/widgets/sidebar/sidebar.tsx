@@ -60,14 +60,14 @@ const Sidebar = () => {
               <Link
                 href={href}
                 className={cn(
-                  'w-full h-[50px] flex items-center gap-3 px-6 text-[20px] font-medium transition-colors duration-500',
+                  'w-full h-[50px] flex items-center gap-3 px-6 text-lg transition-colors duration-500',
                   !isOpen && 'justify-center p-0',
                   isCurrentPage(href) && 'bg-background-checked text-text-checked',
                   !isCurrentPage(href) && 'hover:bg-branding-secondary-default'
                 )}
               >
                 <span className="min-w-[30px] flex justify-center">
-                  <Icon className="fill-current" />
+                  <Icon className="fill-current !w-6 !h-6" />
                 </span>
                 {isOpen && label}
               </Link>

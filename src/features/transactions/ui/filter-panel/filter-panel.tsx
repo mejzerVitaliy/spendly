@@ -196,7 +196,7 @@ const FilterPanel = () => {
               </AnimatePresence>
             </div>
 
-            <div className="pb-2 border-b">
+            <div className="py-2 border-b">
               <div className="flex items-center justify-between mb-0 cursor-pointer" onClick={() => toggleCategoryOpen()}>
                 <p className="text-p1-medium">Category</p>
 
@@ -240,7 +240,7 @@ const FilterPanel = () => {
             </div>
 
 
-            <div>
+            <div className="py-2 border-b">
               <div className="flex items-center justify-between mb-0 cursor-pointer" onClick={() => toggleCurrencyOpen()}>
                 <p className="text-p1-medium">Currency</p>
 
