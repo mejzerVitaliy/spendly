@@ -1,6 +1,6 @@
 'use client'
 
-import { AccountPopover } from "@/features/account";
+import { AccountPopover } from "@/features/account-popover";
 import { ROUTES } from "@/shared/consts";
 import { CalendarIcon, NotificationsIcon } from "@/shared/icons";
 import { usePathname } from "next/navigation";
