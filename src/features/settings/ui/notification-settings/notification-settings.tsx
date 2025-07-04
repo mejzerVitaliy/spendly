@@ -2,6 +2,7 @@
 
 import { Checkbox } from "@/shared/ui"
 import { useState } from "react"
+import { useTranslations } from 'next-intl'
 
 interface NotificationSettingsState {
   emailNotifications: boolean
@@ -12,6 +13,7 @@ interface NotificationSettingsState {
 }
 
 const NotificationSettings = () => {
+  const t = useTranslations('settings.notifications')
   const [settings, setSettings] = useState<NotificationSettingsState>({
     emailNotifications: true,
     pushNotifications: false,
@@ -30,22 +32,22 @@ const NotificationSettings = () => {
   return (
     <div className="space-y-6">
       <div className="border-b border-border pb-4">
-        <h3 className="text-h3 font-medium">Notification Settings</h3>
+        <h3 className="text-h3 font-medium">{t('title')}</h3>
         <p className="text-p2-regular text-text-secondary mt-1">
-          Choose how you want to receive updates and alerts
+          {t('description')}
         </p>
       </div>
 
       <div className="space-y-6">
         <div className="bg-background-card border border-border rounded-card p-4">
-          <h4 className="text-p1-medium font-medium mb-4">Email Notifications</h4>
+          <h4 className="text-p1-medium font-medium mb-4">{t('emailNotifications')}</h4>
           
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-p1-regular">Email Notifications</p>
+                <p className="text-p1-regular">{t('emailNotifications')}</p>
                 <p className="text-c1-regular text-text-tertiary">
-                  Receive important updates via email
+                  {t('emailNotificationsDescription')}
                 </p>
               </div>
               <Checkbox
@@ -56,9 +58,9 @@ const NotificationSettings = () => {
 
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-p1-regular">Weekly Reports</p>
+                <p className="text-p1-regular">{t('weeklyReports')}</p>
                 <p className="text-c1-regular text-text-tertiary">
-                  Get weekly spending summaries
+                  {t('weeklyReportsDescription')}
                 </p>
               </div>
               <Checkbox
@@ -70,14 +72,14 @@ const NotificationSettings = () => {
         </div>
 
         <div className="bg-background-card border border-border rounded-card p-4">
-          <h4 className="text-p1-medium font-medium mb-4">Push Notifications</h4>
+          <h4 className="text-p1-medium font-medium mb-4">{t('pushNotifications')}</h4>
           
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-p1-regular">Push Notifications</p>
+                <p className="text-p1-regular">{t('pushNotifications')}</p>
                 <p className="text-c1-regular text-text-tertiary">
-                  Receive notifications on your device
+                  {t('pushNotificationsDescription')}
                 </p>
               </div>
               <Checkbox
@@ -88,9 +90,9 @@ const NotificationSettings = () => {
 
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-p1-regular">Transaction Alerts</p>
+                <p className="text-p1-regular">{t('transactionAlerts')}</p>
                 <p className="text-c1-regular text-text-tertiary">
-                  Get notified about new transactions
+                  {t('transactionAlertsDescription')}
                 </p>
               </div>
               <Checkbox
@@ -102,14 +104,14 @@ const NotificationSettings = () => {
         </div>
 
         <div className="bg-background-card border border-border rounded-card p-4">
-          <h4 className="text-p1-medium font-medium mb-4">Security Alerts</h4>
+          <h4 className="text-p1-medium font-medium mb-4">{t('securityAlerts')}</h4>
           
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-p1-regular">Security Alerts</p>
+                <p className="text-p1-regular">{t('securityAlerts')}</p>
                 <p className="text-c1-regular text-text-tertiary">
-                  Critical security notifications (always enabled)
+                  {t('securityAlertsDescription')}
                 </p>
               </div>
               <Checkbox

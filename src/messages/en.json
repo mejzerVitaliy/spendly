@@ -1,0 +1,101 @@
+{
+  "settings": {
+    "title": "Settings",
+    "profile": {
+      "title": "Profile Information",
+      "description": "Update your personal information and how others see you",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastNamePlaceholder": "Enter your last name",
+      "emailPlaceholder": "Enter your email address",
+      "saveChanges": "Save Changes",
+      "resetChanges": "Reset Changes",
+      "personalInfo": "Personal Information",
+      "profilePicture": "Profile Picture",
+      "profilePictureDescription": "Upload an image or leave blank to use initials",
+      "upload": "Upload",
+      "remove": "Remove",
+      "uploading": "Uploading...",
+      "removing": "Removing..."
+    },
+    "security": {
+      "title": "Security Settings",
+      "description": "Manage your password and account security",
+      "changePassword": "Change Password",
+      "changePasswordDescription": "Use a strong password to keep your account secure",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "currentPasswordPlaceholder": "Enter your current password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "confirmPasswordPlaceholder": "Confirm your new password",
+      "updatePassword": "Update Password",
+      "cancel": "Cancel",
+      "twoFactor": "Two-Factor Authentication",
+      "twoFactorDescription": "Add an extra layer of security to your account",
+      "enable2FA": "Enable 2FA",
+      "disable2FA": "Disable 2FA"
+    },
+    "preferences": {
+      "title": "App Preferences",
+      "description": "Configure default app behavior and settings",
+      "language": "Language",
+      "languageDescription": "Choose your preferred language",
+      "selectLanguage": "Select Language"
+    },
+    "notifications": {
+      "title": "Notification Settings",
+      "description": "Choose how you want to receive updates and alerts",
+      "emailNotifications": "Email Notifications",
+      "emailNotificationsDescription": "Receive important updates via email",
+      "pushNotifications": "Push Notifications", 
+      "pushNotificationsDescription": "Receive notifications on your device",
+      "transactionAlerts": "Transaction Alerts",
+      "transactionAlertsDescription": "Get notified about new transactions",
+      "weeklyReports": "Weekly Reports",
+      "weeklyReportsDescription": "Get weekly spending summaries",
+      "securityAlerts": "Security Alerts",
+      "securityAlertsDescription": "Critical security notifications (always enabled)"
+    },
+    "dangerZone": {
+      "title": "Danger Zone",
+      "description": "These actions are irreversible. Please proceed with caution.",
+      "logOut": "Log Out",
+      "logOutDescription": "Sign out of your account on this device",
+      "deleteAccount": "Delete Account",
+      "deleteAccountDescription": "Permanently delete your account and all associated data",
+      "confirmLogout": "Confirm Logout",
+      "confirmLogoutDescription": "Are you sure you want to log out? You'll need to sign in again to access your account.",
+      "confirmDelete": "Delete Account",
+      "confirmDeleteDescription": "This action cannot be undone. This will permanently delete your account and remove all your data from our servers.",
+      "typeDelete": "Please type DELETE to confirm:",
+      "typeDeletePlaceholder": "Type DELETE to confirm",
+      "loggingOut": "Logging out...",
+      "deleting": "Deleting..."
+    },
+    "navigation": {
+      "description": "Manage your account and application preferences",
+      "profile": "Profile",
+      "profileDescription": "Personal information and account details",
+      "security": "Security",
+      "securityDescription": "Password and authentication settings",
+      "notifications": "Notifications",
+      "notificationsDescription": "Email and push notification preferences",
+      "appearance": "Appearance Settings",
+      "appearanceDescription": "Customize how the app looks and feels",
+      "preferences": "Preferences",
+      "preferencesDescription": "App behavior and default settings"
+    }
+  },
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error"
+  }
+} 

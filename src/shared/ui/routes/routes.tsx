@@ -54,7 +54,11 @@ const PublicRoute = ({ children }: RouteProps) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.replace(ROUTES.DASHBOARD);
+      const currentPath = window.location.pathname;
+
+      if (currentPath !== ROUTES.TWO_FACTOR) {
+        router.replace(ROUTES.DASHBOARD);
+      }
     }
   }, [isAuthenticated, router]);
 

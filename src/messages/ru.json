@@ -1,0 +1,101 @@
+{
+  "settings": {
+    "title": "Настройки",
+    "profile": {
+      "title": "Информация профиля",
+      "description": "Обновите свою личную информацию и как вас видят другие",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "email": "Адрес электронной почты",
+      "firstNamePlaceholder": "Введите ваше имя",
+      "lastNamePlaceholder": "Введите вашу фамилию",
+      "emailPlaceholder": "Введите ваш адрес электронной почты",
+      "saveChanges": "Сохранить изменения",
+      "resetChanges": "Сбросить изменения",
+      "personalInfo": "Личная информация",
+      "profilePicture": "Фото профиля",
+      "profilePictureDescription": "Загрузите изображение или оставьте пустым для использования инициалов",
+      "upload": "Загрузить",
+      "remove": "Удалить",
+      "uploading": "Загрузка...",
+      "removing": "Удаление..."
+    },
+    "security": {
+      "title": "Настройки безопасности",
+      "description": "Управляйте своим паролем и безопасностью аккаунта",
+      "changePassword": "Изменить пароль",
+      "changePasswordDescription": "Используйте надежный пароль для защиты вашего аккаунта",
+      "currentPassword": "Текущий пароль",
+      "newPassword": "Новый пароль",
+      "confirmPassword": "Подтвердите новый пароль",
+      "currentPasswordPlaceholder": "Введите ваш текущий пароль",
+      "newPasswordPlaceholder": "Введите ваш новый пароль",
+      "confirmPasswordPlaceholder": "Подтвердите ваш новый пароль",
+      "updatePassword": "Обновить пароль",
+      "cancel": "Отмена",
+      "twoFactor": "Двухфакторная аутентификация",
+      "twoFactorDescription": "Добавьте дополнительный уровень безопасности к вашему аккаунту",
+      "enable2FA": "Включить 2FA",
+      "disable2FA": "Отключить 2FA"
+    },
+    "preferences": {
+      "title": "Предпочтения приложения",
+      "description": "Настройте поведение приложения и настройки по умолчанию",
+      "language": "Язык",
+      "languageDescription": "Выберите ваш предпочтительный язык",
+      "selectLanguage": "Выбрать язык"
+    },
+    "notifications": {
+      "title": "Настройки уведомлений",
+      "description": "Выберите как вы хотите получать обновления и оповещения",
+      "emailNotifications": "Email уведомления",
+      "emailNotificationsDescription": "Получать важные обновления по email",
+      "pushNotifications": "Push уведомления",
+      "pushNotificationsDescription": "Получать уведомления на ваше устройство",
+      "transactionAlerts": "Уведомления о транзакциях",
+      "transactionAlertsDescription": "Получать уведомления о новых транзакциях",
+      "weeklyReports": "Еженедельные отчеты",
+      "weeklyReportsDescription": "Получать еженедельные сводки расходов",
+      "securityAlerts": "Уведомления безопасности",
+      "securityAlertsDescription": "Критические уведомления безопасности (всегда включены)"
+    },
+    "dangerZone": {
+      "title": "Опасная зона",
+      "description": "Эти действия необратимы. Пожалуйста, действуйте с осторожностью.",
+      "logOut": "Выйти",
+      "logOutDescription": "Выйти из аккаунта на этом устройстве",
+      "deleteAccount": "Удалить аккаунт",
+      "deleteAccountDescription": "Навсегда удалить ваш аккаунт и все связанные данные",
+      "confirmLogout": "Подтвердить выход",
+      "confirmLogoutDescription": "Вы уверены, что хотите выйти? Вам нужно будет войти снова для доступа к вашему аккаунту.",
+      "confirmDelete": "Удалить аккаунт",
+      "confirmDeleteDescription": "Это действие нельзя отменить. Это навсегда удалит ваш аккаунт и удалит все ваши данные с наших серверов.",
+      "typeDelete": "Пожалуйста, введите DELETE для подтверждения:",
+      "typeDeletePlaceholder": "Введите DELETE для подтверждения",
+      "loggingOut": "Выход...",
+      "deleting": "Удаление..."
+    },
+    "navigation": {
+      "description": "Управляйте своим аккаунтом и настройками приложения",
+      "profile": "Профиль",
+      "profileDescription": "Личная информация и детали аккаунта",
+      "security": "Безопасность",
+      "securityDescription": "Настройки пароля и аутентификации",
+      "notifications": "Уведомления",
+      "notificationsDescription": "Настройки email и push-уведомлений",
+      "appearance": "Настройки внешнего вида",
+      "appearanceDescription": "Настройте как приложение выглядит и ощущается",
+      "preferences": "Предпочтения",
+      "preferencesDescription": "Поведение приложения и настройки по умолчанию"
+    }
+  },
+  "common": {
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "delete": "Удалить",
+    "confirm": "Подтвердить",
+    "loading": "Загрузка...",
+    "success": "Успех",
+    "error": "Ошибка"
+  }
+} 

@@ -5,11 +5,14 @@ import {
   SettingsNavigation, 
   ProfileSettings, 
   SecuritySettings, 
-  NotificationSettings 
+  NotificationSettings,
+  PreferencesSettings 
 } from './ui'
+import { useTranslations } from 'next-intl'
 
 const SettingsContent = () => {
   const [activeTab, setActiveTab] = useState('profile')
+  const t = useTranslations('settings')
 
   const renderContent = () => {
     switch (activeTab) {
@@ -23,9 +26,9 @@ const SettingsContent = () => {
         return (
           <div className="space-y-4">
             <div className="border-b border-border pb-4">
-              <h3 className="text-h3 font-medium">Appearance Settings</h3>
+              <h3 className="text-h3 font-medium">{t('navigation.appearance')}</h3>
               <p className="text-p2-regular text-text-secondary mt-1">
-                Customize how the app looks and feels
+                {t('navigation.appearanceDescription')}
               </p>
             </div>
             <div className="bg-background-card border border-border rounded-card p-4">
@@ -36,21 +39,7 @@ const SettingsContent = () => {
           </div>
         )
       case 'preferences':
-        return (
-          <div className="space-y-4">
-            <div className="border-b border-border pb-4">
-              <h3 className="text-h3 font-medium">App Preferences</h3>
-              <p className="text-p2-regular text-text-secondary mt-1">
-                Configure default app behavior and settings
-              </p>
-            </div>
-            <div className="bg-background-card border border-border rounded-card p-4">
-              <p className="text-p2-regular text-text-secondary">
-                Preference settings coming soon...
-              </p>
-            </div>
-          </div>
-        )
+        return <PreferencesSettings />
       default:
         return <ProfileSettings />
     }

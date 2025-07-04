@@ -19,11 +19,16 @@ interface LoginRequest {
   password: string
 }
 
+interface VerifyTwoFactorRequest {
+  email: string
+  code: string
+}
+
 interface LoginResponse 
   extends ApiResponse<{
     user: User
-    accessToken: string
-    refreshToken: string
+    accessToken?: string
+    refreshToken?: string
   }> {}
 
 interface RefreshResponse 
@@ -42,4 +47,5 @@ export type {
   LoginResponse,
   RefreshResponse,
   GetMeResponse,
+  VerifyTwoFactorRequest,
 }

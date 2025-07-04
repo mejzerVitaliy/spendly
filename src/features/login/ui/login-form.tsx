@@ -3,9 +3,11 @@
 import { AuthForm } from "@/shared/ui"
 import { loginSchema, LoginValues } from "@/features/login"
 import { useAuth } from "@/shared/hooks"
+import { useTwoFactorStore } from "@/shared/stores"
 
 const LoginForm = () => {
   const { loginMutation } = useAuth();
+  const { setEmail } = useTwoFactorStore();
 
   const onSubmit = async ({ email, password}: LoginValues) => {
     const preparedData = {
@@ -14,6 +16,8 @@ const LoginForm = () => {
     }
     
     try {
+      // Store email for potential 2FA use
+      setEmail(email);
       await loginMutation.mutateAsync(preparedData)
     } catch (error) {
       console.error(error)

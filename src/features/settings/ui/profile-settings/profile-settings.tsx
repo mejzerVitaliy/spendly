@@ -7,11 +7,14 @@ import { useAuth, useProfile } from "@/shared/hooks"
 import { profileSchema, ProfileValues } from "@/features/settings"
 import { useEffect } from "react"
 import { toast } from "sonner"
+import { useTranslations } from 'next-intl'
 import { AvatarUpload } from "../avatar-upload"
+import { DangerZone } from "../danger-zone"
 
 const ProfileSettings = () => {
   const { getMeQuery } = useAuth()
   const { updateProfileMutation } = useProfile()
+  const t = useTranslations('settings.profile')
 
   const userData = getMeQuery.data?.data
 
@@ -43,9 +46,9 @@ const ProfileSettings = () => {
   return (
     <div className="space-y-4">
       <div className="border-b border-border pb-4">
-        <h3 className="text-h3 font-medium">Profile Information</h3>
+        <h3 className="text-h3 font-medium">{t('title')}</h3>
         <p className="text-p2-regular text-text-secondary mt-1">
-          Update your personal information and how others see you
+          {t('description')}
         </p>
       </div>
 
@@ -57,21 +60,21 @@ const ProfileSettings = () => {
       </div>
 
       <div className="bg-background-card border border-border rounded-card p-4">
-        <h4 className="text-lg font-medium mb-4">Personal Information</h4>
+        <h4 className="text-lg font-medium mb-4">{t('personalInfo')}</h4>
         
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
-              <FormField
+                              <FormField
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>First Name</FormLabel>
+                    <FormLabel>{t('firstName')}</FormLabel>
                     <FormControl>
                       <Input 
                         type="text"
-                        placeholder="Enter your first name"
+                        placeholder={t('firstNamePlaceholder')}
                         {...field}
                       />
                     </FormControl>
@@ -85,11 +88,11 @@ const ProfileSettings = () => {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Last Name</FormLabel>
+                    <FormLabel>{t('lastName')}</FormLabel>
                     <FormControl>
                       <Input 
                         type="text"
-                        placeholder="Enter your last name"
+                        placeholder={t('lastNamePlaceholder')}
                         {...field}
                       />
                     </FormControl>
@@ -104,11 +107,11 @@ const ProfileSettings = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email Address</FormLabel>
+                  <FormLabel>{t('email')}</FormLabel>
                   <FormControl>
                     <Input 
                       type="text"
-                      placeholder="Enter your email address"
+                      placeholder={t('emailPlaceholder')}
                       {...field}
                     />
                   </FormControl>
@@ -124,7 +127,7 @@ const ProfileSettings = () => {
                 className="flex-1"
                 disabled={updateProfileMutation.isPending}
               >
-                Save Changes
+                {t('saveChanges')}
               </Button>
               <Button 
                 type="button" 
@@ -132,12 +135,14 @@ const ProfileSettings = () => {
                 className="flex-1"
                 onClick={() => form.reset()}
               >
-                Reset Changes
+                {t('resetChanges')}
               </Button>
             </div>
           </form>
         </Form>
       </div>
+
+      <DangerZone />
     </div>
   )
 }

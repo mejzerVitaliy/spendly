@@ -1,0 +1,101 @@
+{
+  "settings": {
+    "title": "Налаштування",
+    "profile": {
+      "title": "Інформація профілю",
+      "description": "Оновіть свою особисту інформацію та як вас бачать інші",
+      "firstName": "Ім'я",
+      "lastName": "Прізвище",
+      "email": "Адреса електронної пошти",
+      "firstNamePlaceholder": "Введіть ваше ім'я",
+      "lastNamePlaceholder": "Введіть ваше прізвище",
+      "emailPlaceholder": "Введіть вашу адресу електронної пошти",
+      "saveChanges": "Зберегти зміни",
+      "resetChanges": "Скинути зміни",
+      "personalInfo": "Особиста інформація",
+      "profilePicture": "Фото профілю",
+      "profilePictureDescription": "Завантажте зображення або залиште порожнім для використання ініціалів",
+      "upload": "Завантажити",
+      "remove": "Видалити",
+      "uploading": "Завантаження...",
+      "removing": "Видалення..."
+    },
+    "security": {
+      "title": "Налаштування безпеки",
+      "description": "Керуйте своїм паролем та безпекою акаунта",
+      "changePassword": "Змінити пароль",
+      "changePasswordDescription": "Використовуйте надійний пароль для захисту вашого акаунта",
+      "currentPassword": "Поточний пароль",
+      "newPassword": "Новий пароль",
+      "confirmPassword": "Підтвердіть новий пароль",
+      "currentPasswordPlaceholder": "Введіть ваш поточний пароль",
+      "newPasswordPlaceholder": "Введіть ваш новий пароль",
+      "confirmPasswordPlaceholder": "Підтвердіть ваш новий пароль",
+      "updatePassword": "Оновити пароль",
+      "cancel": "Скасувати",
+      "twoFactor": "Двофакторна автентифікація",
+      "twoFactorDescription": "Додайте додатковий рівень безпеки до вашого акаунта",
+      "enable2FA": "Увімкнути 2FA",
+      "disable2FA": "Вимкнути 2FA"
+    },
+    "preferences": {
+      "title": "Вподобання програми",
+      "description": "Налаштуйте поведінку програми та налаштування за замовчуванням",
+      "language": "Мова",
+      "languageDescription": "Виберіть вашу бажану мову",
+      "selectLanguage": "Вибрати мову"
+    },
+    "notifications": {
+      "title": "Налаштування сповіщень",
+      "description": "Виберіть як ви хочете отримувати оновлення та сповіщення",
+      "emailNotifications": "Email сповіщення",
+      "emailNotificationsDescription": "Отримувати важливі оновлення по email",
+      "pushNotifications": "Push сповіщення",
+      "pushNotificationsDescription": "Отримувати сповіщення на ваш пристрій",
+      "transactionAlerts": "Сповіщення про транзакції",
+      "transactionAlertsDescription": "Отримувати сповіщення про нові транзакції",
+      "weeklyReports": "Тижневі звіти",
+      "weeklyReportsDescription": "Отримувати тижневі звіти про витрати",
+      "securityAlerts": "Сповіщення безпеки",
+      "securityAlertsDescription": "Критичні сповіщення безпеки (завжди увімкнені)"
+    },
+    "dangerZone": {
+      "title": "Небезпечна зона",
+      "description": "Ці дії незворотні. Будь ласка, діяйте обережно.",
+      "logOut": "Вийти",
+      "logOutDescription": "Вийти з акаунта на цьому пристрої",
+      "deleteAccount": "Видалити акаунт",
+      "deleteAccountDescription": "Назавжди видалити ваш акаунт та всі пов'язані дані",
+      "confirmLogout": "Підтвердити вихід",
+      "confirmLogoutDescription": "Ви впевнені, що хочете вийти? Вам потрібно буде увійти знову для доступу до вашого акаунта.",
+      "confirmDelete": "Видалити акаунт",
+      "confirmDeleteDescription": "Цю дію не можна скасувати. Це назавжди видалить ваш акаунт та видалить всі ваші дані з наших серверів.",
+      "typeDelete": "Будь ласка, введіть DELETE для підтвердження:",
+      "typeDeletePlaceholder": "Введіть DELETE для підтвердження",
+      "loggingOut": "Вихід...",
+      "deleting": "Видалення..."
+    },
+    "navigation": {
+      "description": "Керуйте своїм акаунтом та налаштуваннями програми",
+      "profile": "Профіль",
+      "profileDescription": "Особиста інформація та деталі акаунта",
+      "security": "Безпека",
+      "securityDescription": "Налаштування пароля та автентифікації",
+      "notifications": "Сповіщення",
+      "notificationsDescription": "Налаштування email та push-сповіщень",
+      "appearance": "Налаштування зовнішнього вигляду",
+      "appearanceDescription": "Налаштуйте як програма виглядає та відчувається",
+      "preferences": "Вподобання",
+      "preferencesDescription": "Поведінка програми та налаштування за замовчуванням"
+    }
+  },
+  "common": {
+    "cancel": "Скасувати",
+    "save": "Зберегти",
+    "delete": "Видалити",
+    "confirm": "Підтвердити",
+    "loading": "Завантаження...",
+    "success": "Успіх",
+    "error": "Помилка"
+  }
+} 

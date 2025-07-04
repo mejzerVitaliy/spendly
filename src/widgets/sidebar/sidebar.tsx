@@ -82,8 +82,8 @@ const Sidebar = () => {
           >
             <ChevronLeftIcon
               className={cn(
-                'transform transition-transform',
-                isOpen ? 'rotate-0' : 'rotate-180',
+                'transform transition-transform duration-300',
+                isOpen ? 'rotate-0' : 'rotate-[540deg]',
               )}
               height={24}
               width={24}

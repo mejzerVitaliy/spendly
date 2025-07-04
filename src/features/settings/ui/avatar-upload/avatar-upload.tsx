@@ -7,6 +7,7 @@ import { useRef } from "react"
 import { toast } from "sonner"
 import { cn } from "@/shared/lib"
 import Image from "next/image"
+import { useTranslations } from 'next-intl'
 
 interface AvatarUploadProps {
   currentAvatar?: string
@@ -16,6 +17,7 @@ interface AvatarUploadProps {
 const AvatarUpload = ({ currentAvatar, userName }: AvatarUploadProps) => {
   const { updateAvatarMutation, deleteAvatarMutation } = useProfile()
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const t = useTranslations('settings.profile')
 
   const handleFileSelect = () => {
     fileInputRef.current?.click()
@@ -88,9 +90,9 @@ const AvatarUpload = ({ currentAvatar, userName }: AvatarUploadProps) => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h4 className="text-lg font-medium">Profile Picture</h4>
+          <h4 className="text-lg font-medium">{t('profilePicture')}</h4>
           <p className="text-p2-regular text-text-secondary">
-            Upload an image or leave blank to use initials
+            {t('profilePictureDescription')}
           </p>
           
           <div className="flex gap-2">
@@ -101,7 +103,7 @@ const AvatarUpload = ({ currentAvatar, userName }: AvatarUploadProps) => {
               disabled={updateAvatarMutation.isPending}
               leftIcon={<UploadIcon className="w-4 h-4" />}
             >
-              {updateAvatarMutation.isPending ? 'Uploading...' : 'Upload'}
+              {updateAvatarMutation.isPending ? t('uploading') : t('upload')}
             </Button>
             
             {currentAvatar && (
@@ -112,7 +114,7 @@ const AvatarUpload = ({ currentAvatar, userName }: AvatarUploadProps) => {
                 disabled={deleteAvatarMutation.isPending}
                 leftIcon={<TrashIcon className="w-4 h-4" />}
               >
-                {deleteAvatarMutation.isPending ? 'Removing...' : 'Remove'}
+                {deleteAvatarMutation.isPending ? t('removing') : t('remove')}
               </Button>
             )}
           </div>

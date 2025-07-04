@@ -2,51 +2,53 @@
 
 import { cn } from "@/shared/lib"
 import { UserIcon, ShieldIcon, BellIcon, PaletteIcon, CogIcon } from "lucide-react"
+import { useTranslations } from 'next-intl'
 
 interface SettingsNavigationProps {
   activeTab: string
   onTabChange: (tab: string) => void
 }
 
-const navigationItems = [
-  {
-    id: 'profile',
-    label: 'Profile',
-    icon: UserIcon,
-    description: 'Personal information and account details'
-  },
-  {
-    id: 'security',
-    label: 'Security',
-    icon: ShieldIcon,
-    description: 'Password and authentication settings'
-  },
-  {
-    id: 'notifications',
-    label: 'Notifications',
-    icon: BellIcon,
-    description: 'Email and push notification preferences'
-  },
-  {
-    id: 'appearance',
-    label: 'Appearance',
-    icon: PaletteIcon,
-    description: 'Theme and display settings'
-  },
-  {
-    id: 'preferences',
-    label: 'Preferences',
-    icon: CogIcon,
-    description: 'App behavior and default settings'
-  }
-]
-
 const SettingsNavigation = ({ activeTab, onTabChange }: SettingsNavigationProps) => {
+  const t = useTranslations('settings.navigation')
+  
+  const navigationItems = [
+    {
+      id: 'profile',
+      label: t('profile'),
+      icon: UserIcon,
+      description: t('profileDescription')
+    },
+    {
+      id: 'security',
+      label: t('security'),
+      icon: ShieldIcon,
+      description: t('securityDescription')
+    },
+    {
+      id: 'notifications',
+      label: t('notifications'),
+      icon: BellIcon,
+      description: t('notificationsDescription')
+    },
+    {
+      id: 'appearance',
+      label: t('appearance'),
+      icon: PaletteIcon,
+      description: t('appearanceDescription')
+    },
+    {
+      id: 'preferences',
+      label: t('preferences'),
+      icon: CogIcon,
+      description: t('preferencesDescription')
+    }
+  ]
   return (
     <aside className="w-[280px] rounded-card h-full bg-background-white shadow-lg p-6">
       <div className="mb-6">
         <p className="text-p1-medium text-text-secondary">
-          Manage your account and application preferences
+          {t('description')}
         </p>
       </div>
 

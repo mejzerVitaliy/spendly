@@ -4,60 +4,69 @@ import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage 
 import { PasswordInput } from "@/shared/ui"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
-
-const securitySchema = z.object({
-  currentPassword: z.string().min(1, "Current password is required"),
-  newPassword: z.string().min(8, "Password must be at least 8 characters"),
-  confirmPassword: z.string().min(1, "Please confirm your password"),
-}).refine((data) => data.newPassword === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-})
-
-type SecurityFormData = z.infer<typeof securitySchema>
+import { securitySchema, SecurityValues } from "../../lib/validation"
+import { useAuth, useProfile } from "@/shared/hooks"
+import { toast } from "sonner"
+import { useTranslations } from 'next-intl'
 
 const SecuritySettings = () => {
-  const form = useForm<SecurityFormData>({
+  const { updatePasswordMutation } = useProfile()
+  const { toggleTwoFactorMutation, getMeQuery } = useAuth();
+  const t = useTranslations('settings.security')
+
+  const user = getMeQuery.data?.data
+
+  const form = useForm<SecurityValues>({
     resolver: zodResolver(securitySchema),
     defaultValues: {
-      currentPassword: '',
+      oldPassword: '',
       newPassword: '',
       confirmPassword: '',
     }
   })
 
-  const onSubmit = (data: SecurityFormData) => {
-    console.log('Security update:', data)
-    // TODO: Implement password change API call
+  const onSubmit = (data: SecurityValues) => {
+    updatePasswordMutation.mutate(data)
+  }
+
+  const toggleTwoFactor = () => {
+    if (user?.isTwoFactorEnabled) {
+      toggleTwoFactorMutation.mutate()
+
+      toast.success('Disabled successfully!')
+    } else {
+      toggleTwoFactorMutation.mutate()
+
+      toast.success('Enabled successfully!')
+    }
   }
 
   return (
     <div className="space-y-6">
       <div className="border-b border-border pb-4">
-        <h3 className="text-h3 font-medium">Security Settings</h3>
+        <h3 className="text-h3 font-medium">{t('title')}</h3>
         <p className="text-p2-regular text-text-secondary mt-1">
-          Manage your password and account security
+          {t('description')}
         </p>
       </div>
 
       <div className="bg-background-card border border-border rounded-card p-4">
-        <h4 className="text-p1-medium font-medium mb-2">Change Password</h4>
+        <h4 className="text-lg font-medium mb-2">{t('changePassword')}</h4>
         <p className="text-p2-regular text-text-secondary mb-4">
-          Use a strong password to keep your account secure
+          {t('changePasswordDescription')}
         </p>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="currentPassword"
+              name="oldPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Current Password</FormLabel>
+                  <FormLabel>{t('currentPassword')}</FormLabel>
                   <FormControl>
                     <PasswordInput 
-                      placeholder="Enter your current password"
+                      placeholder={t('currentPasswordPlaceholder')}
                       {...field}
                     />
                   </FormControl>
@@ -71,10 +80,10 @@ const SecuritySettings = () => {
               name="newPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>New Password</FormLabel>
+                  <FormLabel>{t('newPassword')}</FormLabel>
                   <FormControl>
                     <PasswordInput 
-                      placeholder="Enter your new password"
+                      placeholder={t('newPasswordPlaceholder')}
                       {...field}
                     />
                   </FormControl>
@@ -88,10 +97,10 @@ const SecuritySettings = () => {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm New Password</FormLabel>
+                  <FormLabel>{t('confirmPassword')}</FormLabel>
                   <FormControl>
                     <PasswordInput 
-                      placeholder="Confirm your new password"
+                      placeholder={t('confirmPasswordPlaceholder')}
                       {...field}
                     />
                   </FormControl>
@@ -102,14 +111,7 @@ const SecuritySettings = () => {
 
             <div className="flex gap-3 pt-2">
               <Button type="submit" variant="branding">
-                Update Password
-              </Button>
-              <Button 
-                type="button" 
-                variant="outline"
-                onClick={() => form.reset()}
-              >
-                Cancel
+                {t('updatePassword')}
               </Button>
             </div>
           </form>
@@ -117,13 +119,13 @@ const SecuritySettings = () => {
       </div>
 
       <div className="bg-background-card border border-border rounded-card p-4">
-        <h4 className="text-p1-medium font-medium mb-2">Two-Factor Authentication</h4>
+        <h4 className="text-lg font-medium mb-2">{t('twoFactor')}</h4>
         <p className="text-p2-regular text-text-secondary mb-4">
-          Add an extra layer of security to your account
+          {t('twoFactorDescription')}
         </p>
         
-        <Button variant="outline" disabled>
-          Enable 2FA (Coming Soon)
+        <Button variant="branding" onClick={toggleTwoFactor}>
+          {user?.isTwoFactorEnabled ? t('disable2FA') : t('enable2FA')}
         </Button>
       </div>
     </div>
