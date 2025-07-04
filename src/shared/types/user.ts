@@ -1,11 +1,5 @@
 import { Currency } from "./transactions"
 
-enum Language {
-  EN = 'en',
-  RU = 'ru',
-  UA = 'ua',
-}
-
 interface User {
   id: string
   email: string
@@ -14,7 +8,6 @@ interface User {
   avatarUrl?: string
   isTwoFactorEnabled: boolean
   mainCurrency: Currency
-  language: Language
   createdAt: string
   updatedAt: string
 }
