@@ -1,4 +1,12 @@
 {
+  "header": {
+    "dashboard": "Главная",
+    "transactions": "Транзакции",
+    "reports": "Отчеты",
+    "insights": "Блог",
+    "settings": "Настройки",
+    "totalBalance": "Текущий баланс"
+  },
   "settings": {
     "title": "Настройки",
     "profile": {
@@ -43,7 +51,9 @@
       "description": "Настройте поведение приложения и настройки по умолчанию",
       "language": "Язык",
       "languageDescription": "Выберите ваш предпочтительный язык",
-      "selectLanguage": "Выбрать язык"
+      "selectLanguage": "Выбрать язык",
+      "mainCurrency": "Основная валюта",
+      "mainCurrencyDescription": "Выберите вашу предпочтительную валюту"
     },
     "notifications": {
       "title": "Настройки уведомлений",

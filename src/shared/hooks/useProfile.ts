@@ -2,7 +2,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { profileApi } from "@/shared/api";
-import { ChangePasswordRequest, UpdateUserRequest } from "@/shared/types";
+import { ChangePasswordRequest, UpdateSettingsRequest, UpdateUserRequest } from "@/shared/types";
 import { toast } from "sonner";
 import { useAuthStore } from "@/shared/stores";
 import { useRouter } from "next/navigation";
@@ -62,12 +62,22 @@ const useProfile = () => {
     }
   })
 
+  const updateSettingsMutation = useMutation({
+    mutationKey: ['updateSettings'],
+    mutationFn: (data: UpdateSettingsRequest) => profileApi.updateSettings(data),
+    onSuccess: () => {
+      toast.success("Settings updated successfully");
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+    },
+  })
+
   return {
     updateProfileMutation,
     updateAvatarMutation,
     deleteAvatarMutation,
     updatePasswordMutation,
-    deleteAccountMutation
+    deleteAccountMutation,
+    updateSettingsMutation
   }
 }
 

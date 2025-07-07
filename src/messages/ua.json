@@ -1,4 +1,12 @@
 {
+  "header": {
+    "dashboard": "Головна",
+    "transactions": "Транзакції",
+    "reports": "Звіти",
+    "insights": "Блог",
+    "settings": "Налаштування",
+    "totalBalance": "Поточний баланс"
+  },
   "settings": {
     "title": "Налаштування",
     "profile": {
@@ -43,7 +51,9 @@
       "description": "Налаштуйте поведінку програми та налаштування за замовчуванням",
       "language": "Мова",
       "languageDescription": "Виберіть вашу бажану мову",
-      "selectLanguage": "Вибрати мову"
+      "selectLanguage": "Вибрати мову",
+      "mainCurrency": "Основна валюта",
+      "mainCurrencyDescription": "Виберіть вашу бажану валюту"
     },
     "notifications": {
       "title": "Налаштування сповіщень",
