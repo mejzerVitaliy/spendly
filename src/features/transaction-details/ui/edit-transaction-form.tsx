@@ -44,9 +44,6 @@ const EditTransactionForm = ({
   const { updateTransactionMutation, getAllTransactionsQuery } =
     useTransactions();
 
-  console.log("updateTransactionMutation:", updateTransactionMutation);
-  console.log("Transaction:", transaction);
-
   const form = useForm<UpdateTransactionValues>({
     resolver: zodResolver(updateTransactionSchema),
     defaultValues: {
@@ -59,7 +56,6 @@ const EditTransactionForm = ({
     },
   });
 
-  // Update form when transaction changes
   useEffect(() => {
     form.reset({
       amount: transaction.amount,
@@ -72,46 +68,17 @@ const EditTransactionForm = ({
   }, [transaction, form]);
 
   const onSubmit = async (data: UpdateTransactionValues) => {
-    console.log("Form submitted with data:", data);
-    console.log("Transaction ID:", transaction.id);
-
     const preparedData = {
       ...data,
       amount: Number(data.amount),
       date: new Date(data.date),
     };
 
-    console.log("Prepared data for API:", preparedData);
-
     try {
-      console.log("Calling updateTransactionMutation...");
-
-      // Try with .mutate() first for debugging
-    //   updateTransactionMutation.mutate(
-    //     {
-    //       id: transaction.id,
-    //       data: preparedData,
-    //     },
-    //     {
-    //       onSuccess: (result) => {
-    //         console.log("Update success:", result);
-    //         getAllTransactionsQuery.refetch();
-    //         toast.success("Transaction updated successfully!");
-    //         onSave?.();
-    //       },
-    //       onError: (error) => {
-    //         console.error("Update failed:", error);
-    //         toast.error("Failed to update transaction");
-    //       },
-    //     }
-    //   );
-
-      // Also try with mutateAsync for comparison
-      const result = await updateTransactionMutation.mutateAsync({
+      await updateTransactionMutation.mutateAsync({
         id: transaction.id,
         data: preparedData,
       });
-      console.log("Update result:", result);
 
       getAllTransactionsQuery.refetch();
       toast.success("Transaction updated successfully!");
@@ -136,11 +103,7 @@ const EditTransactionForm = ({
       <Form {...form}>
         <form
           className="space-y-6"
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log("Form submit event triggered");
-            form.handleSubmit(onSubmit)(e);
-          }}
+          onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormField
             name="amount"
@@ -149,13 +112,11 @@ const EditTransactionForm = ({
                 <FormLabel>Transaction Amount</FormLabel>
                 <FormControl>
                   <Input
-                    type="number"
-                    step="0.01"
+                    type="text"
                     placeholder="Enter amount"
                     value={field.value}
                     onChange={(e) => {
-                      const value =
-                        e.target.value === "" ? 0 : Number(e.target.value);
+                      const value = Number(e.target.value) || 0;
                       field.onChange(value);
                     }}
                   />

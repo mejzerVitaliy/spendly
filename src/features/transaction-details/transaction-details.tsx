@@ -64,7 +64,6 @@ const TransactionDetails = () => {
   return (
     <div className="h-full overflow-auto p-6">
       <div className="max-w-2xl mx-auto">
-        {/* Header with back button */}
         <div className="flex items-center gap-4 mb-6">
           <Button
             onClick={handleGoBack}

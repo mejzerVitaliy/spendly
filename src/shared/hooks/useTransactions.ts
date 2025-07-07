@@ -12,6 +12,7 @@ const useTransactions = () => {
     mutationFn: transactionApi.create,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['transactions'] })
+      queryClient.invalidateQueries({ queryKey: ['user'] })
     }
   })
 
@@ -30,6 +31,7 @@ const useTransactions = () => {
     mutationFn: ({ id, data }: { id: string; data: UpdateTransactionRequest }) => transactionApi.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['transactions'] })
+      queryClient.invalidateQueries({ queryKey: ['user'] })
     }
   })
 
@@ -38,6 +40,7 @@ const useTransactions = () => {
     mutationFn: transactionApi.remove,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['transactions'] })
+      queryClient.invalidateQueries({ queryKey: ['user'] })
     }
   })
 

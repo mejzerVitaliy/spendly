@@ -1,5 +1,5 @@
 import { api } from "@/shared/api";
-import { UpdateUserRequest, ChangePasswordRequest } from "@/shared/types/profile";
+import { UpdateUserRequest, ChangePasswordRequest, UpdateSettingsRequest } from "@/shared/types/profile";
 
 const updateProfile = async (request: UpdateUserRequest) => {
   await api.put("/profile/update", request);
@@ -24,10 +24,15 @@ const deleteAccount = async () => {
   await api.delete("/profile/delete");
 }
 
+const updateSettings = async (request: UpdateSettingsRequest) => {
+  await api.put("/profile/update-settings", request);
+}
+
 export const profileApi = {
   updateProfile,
   updateAvatar,
   deleteAvatar,
   changePassword,
-  deleteAccount
+  deleteAccount,
+  updateSettings
 }

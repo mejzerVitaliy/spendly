@@ -1,4 +1,12 @@
 {
+  "header": {
+    "dashboard": "Dashboard",
+    "transactions": "Transactions",
+    "reports": "Reports",
+    "insights": "Insights",
+    "settings": "Settings",
+    "totalBalance": "Current Balance"
+  },
   "settings": {
     "title": "Settings",
     "profile": {
@@ -43,7 +51,9 @@
       "description": "Configure default app behavior and settings",
       "language": "Language",
       "languageDescription": "Choose your preferred language",
-      "selectLanguage": "Select Language"
+      "selectLanguage": "Select Language",
+      "mainCurrency": "Main Currency",
+      "mainCurrencyDescription": "Choose your preferred currency"
     },
     "notifications": {
       "title": "Notification Settings",

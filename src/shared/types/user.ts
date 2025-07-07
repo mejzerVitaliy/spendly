@@ -8,6 +8,7 @@ interface User {
   avatarUrl?: string
   isTwoFactorEnabled: boolean
   mainCurrency: Currency
+  totalBalance: number
   createdAt: string
   updatedAt: string
 }

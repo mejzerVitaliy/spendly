@@ -13,8 +13,13 @@ interface ChangePasswordRequest {
   newPassword: string
 }
 
+interface UpdateSettingsRequest {
+  mainCurrency: string
+}
+
 export type {
   UpdateUserRequest,
   UpdateAvatarRequest,
-  ChangePasswordRequest
+  ChangePasswordRequest,
+  UpdateSettingsRequest
 }
